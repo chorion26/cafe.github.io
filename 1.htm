@@ -1,0 +1,64 @@
+<body>
+<input type="button" onClick="c()" value="测试">
+<img id="img_id_0" src="" />
+<img id="img_id_1" src="" />
+<img id="img_id_2" src="" />
+<br>
+<iframe frameborder="0" id="printIframe" name="printIframe" style="display:none "></iframe>
+</body>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script language="javascript">
+function test(){
+
+	var src=[
+	  "http://www.w3school.com.cn/i/site_photoref.jpg",
+	  "http://www.w3school.com.cn/i/site_photoexa.jpg",
+	  "http://www.w3school.com.cn/i/site_photoqe.jpg"
+	]
+
+	for(var i=0;i<3;i++){
+	  var img=new Image();
+	  img.src=src[i];
+
+	//这句就是无效
+	  img.οnlοad=function(){
+		alert(img);
+	  }
+	}
+}
+
+
+var src=[
+		  "http://www.w3school.com.cn/i/site_photoref.jpg",
+		  "http://www.w3school.com.cn/i/site_photoexa.jpg",
+		  "http://www.w3school.com.cn/i/site_photoqe.jpg"
+		]
+		
+function a(){
+	
+	for(var i=0;i<3;i++){
+		(function(i){
+			var img = new Image();
+			img.src = src[i];
+			img.onload = function(){
+				console.log(img);
+			}
+		})(i);
+	}
+}
+function b(){
+	document.getElementById("img_id_0").src="http://www.w3school.com.cn/i/site_photoref.jpg";
+	document.getElementById("img_id_1").src="http://www.w3school.com.cn/i/site_photoexa.jpg";
+	document.getElementById("img_id_2").src="http://www.w3school.com.cn/i/site_photoqe.jpg";
+}
+
+function c(){	
+
+		$("#printIframe").prop("src","site_photoref.jpg");
+		var iframe=document.getElementById("printIframe");
+		iframe.onload=function(){
+			document.getElementById("printIframe").contentWindow.print();
+		}
+
+}
+</script>
